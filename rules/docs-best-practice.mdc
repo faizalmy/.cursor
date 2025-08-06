@@ -1,0 +1,98 @@
+---
+alwaysApply: false
+---
+**Summary of Web Best Practices for Organizing Technical Documentation (2025):**
+
+### 1. **Adopt a Purpose-Driven Structure (Diátaxis Framework)**
+- **Tutorials:** Learning-oriented, step-by-step guides for new users.
+- **How-to Guides:** Goal-oriented instructions for specific tasks.
+- **Explanation:** In-depth discussions to provide understanding (architecture, design decisions, business context).
+- **Reference:** Technical specifications, API docs, data models, error codes.
+
+*Source: [GitHub Developer Skills Blog, 2025](https://github.blog/developer-skills/documentation-done-right-a-developers-guide/)*
+
+---
+
+### 2. **Organize by User Journey and Feature, Not Just by Code Module**
+- **Netflix Approach:** Map docs to developer workflows (onboarding, implementation, mastery).
+- Provide multiple entry points: quick start, advanced, troubleshooting.
+- Each feature doc should answer: Why does this exist? How do I use it? What can go wrong?
+
+*Source: [Netflix/Teamcamp Documentation Approach, 2025](https://dev.to/teamcamp/documentation-that-developers-actually-read-the-netflix-approach-1h9i)*
+
+---
+
+### 3. **Reduce Redundancy by Layering, Not Duplicating**
+- **Avoid per-file or per-class docs unless auto-generated.**
+- Use high-level feature docs that link to reference/API/auto-generated docs for details.
+- Separate narrative (concepts, guides) from reference (API, models).
+
+---
+
+### 4. **Segment by Sub-Product or Major Domain**
+- If your app has major domains (e.g., Receipts, Accounts, Plans), group docs accordingly.
+- For each domain, provide:
+  - Overview/Concepts
+  - How-to Guides
+  - Reference/API
+  - Troubleshooting/FAQ
+
+*Source: [kapa.ai LLM Docs Best Practices, 2025](https://www.kapa.ai/blog/optimizing-technical-documentation-for-llms)*
+
+---
+
+### 5. **Keep Docs MECE (Mutually Exclusive, Collectively Exhaustive)**
+- No overlap between sections.
+- Every user need is covered somewhere, but only once.
+
+*Source: [Bear Blog, 2025](https://rowsana.bearblog.dev/the-documentation-problem/)*
+
+---
+
+### 6. **Practical Folder Structure Example**
+```
+docs/
+  README.md                # Project intro, high-level overview, links to all sections
+  getting-started.md       # Quick start, setup, onboarding
+  architecture.md          # System design, data flow, design decisions
+  features/
+    receipts.md            # Receipts domain: overview, guides, reference, FAQ
+    accounts.md
+    plans.md
+    ...
+  guides/
+    onboarding.md
+    troubleshooting.md
+    ...
+  reference/
+    api.md                 # API endpoints, data models, error codes
+    models.md
+    ...
+  faq.md
+  changelog.md
+```
+- **Features/**: One doc per major domain/feature, not per file/class.
+- **Guides/**: Cross-cutting how-tos, onboarding, troubleshooting.
+- **Reference/**: API, data models, technical specs.
+- **FAQ/Changelog**: For support and versioning.
+
+---
+
+### 7. **Automate Where Possible**
+- Use tools to auto-generate API/model/class docs and link to them from feature docs.
+- Keep narrative and reference docs separate but cross-linked.
+
+---
+
+### 8. **Maintainability**
+- Assign ownership for each doc section.
+- Regularly review and update.
+- Use feedback mechanisms (e.g., “Was this helpful?”).
+
+---
+
+**Conclusion:**
+- Organize docs by user need and feature domain, not by code module.
+- Use layered docs: high-level guides, deep dives, and auto-generated references.
+- Avoid per-file/class manual docs unless auto-generated.
+- Use a clear, MECE structure with cross-links and feedback loops.

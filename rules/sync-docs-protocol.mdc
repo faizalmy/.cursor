@@ -1,0 +1,118 @@
+---
+alwaysApply: false
+---
+You are tasked with updating existing documentation to match the current state of a codebase. Execute this process systematically to ensure accuracy while preserving documentation quality and structure.
+
+## Analysis Protocol
+
+### Phase 1: DOCUMENTATION INVENTORY
+**Objective**: Catalog existing documentation structure and establish baseline understanding.
+
+**Required Actions**:
+- Identify all existing documentation files and their primary purposes
+- Map cross-references, internal links, and document dependencies
+- Analyze established style patterns, terminology, and organizational structure
+- Document current audience focus and technical depth levels
+- Catalog code examples, configuration samples, and technical specifications
+
+**Critical Focus**: Understand what exists before determining what needs updating.
+
+### Phase 2: ACCURACY ASSESSMENT
+**Objective**: Compare documentation assertions against current codebase reality.
+
+**Required Actions**:
+- Verify setup instructions against current installation requirements
+- Validate code examples against actual implementation
+- Check API documentation against current endpoints and data structures
+- Confirm architecture descriptions match current system design
+- Assess feature descriptions against actual user-facing functionality
+
+**Critical Focus**: Identify specific discrepancies, not general outdatedness.
+
+### Phase 3: IMPACT ANALYSIS
+**Objective**: Determine which documentation sections require updates and why.
+
+**Required Actions**:
+- Map code changes to affected documentation sections
+- Identify downstream documentation dependencies of changed components
+- Assess whether changes affect multiple documents or cross-references
+- Determine scope of updates needed (minor corrections vs major revisions)
+- Prioritize updates based on accuracy impact and user importance
+
+**Critical Focus**: Understand the ripple effects of each required change.
+
+### Phase 4: SELECTIVE UPDATES
+**Objective**: Implement precise updates while preserving documentation quality.
+
+**Required Actions**:
+- Update only inaccurate or outdated content, preserving correct existing information
+- Maintain original documentation style, voice, and formatting patterns
+- Ensure updated content integrates seamlessly with existing sections
+- Verify and update cross-references affected by content changes
+- Preserve original organizational structure and navigation patterns
+
+**Critical Focus**: Surgical precision - modify only what needs changing.
+
+## Update Standards
+
+### Accuracy Requirements
+- All updated content must accurately reflect current codebase state
+- Code examples must be tested and functional with current implementation
+- Configuration samples must work with current environment requirements
+- Cross-references must remain valid after content updates
+
+### Preservation Requirements
+- Maintain original documentation voice, tone, and writing style
+- Preserve established terminology and naming conventions
+- Keep existing organizational structure and document hierarchy
+- Retain original audience focus and technical depth appropriate for intended users
+
+### Consistency Requirements
+- Ensure updated sections integrate seamlessly with unchanged content
+- Maintain unified formatting and presentation standards
+- Preserve cross-document consistency in terminology and concepts
+- Keep internal linking structure functional and intuitive
+
+### Transparency Requirements
+- Clearly identify what sections were updated and why
+- Provide rationale for significant changes or additions
+- Maintain change history appropriate for team collaboration
+- Document any assumptions made during update process
+
+## Quality Validation Protocol
+
+### Content Verification
+- [ ] Updated setup instructions result in functional development environments
+- [ ] Modified code examples execute successfully with expected outputs
+- [ ] API documentation reflects current endpoints and data structures
+- [ ] Architecture descriptions align with current system implementation
+- [ ] Feature descriptions match actual user-facing functionality
+
+### Integration Verification
+- [ ] Updated content maintains consistent voice with existing documentation
+- [ ] Cross-references and internal links remain functional
+- [ ] Document navigation and organization remain intuitive
+- [ ] Updated sections integrate seamlessly with unchanged content
+- [ ] Overall documentation suite maintains coherent structure
+
+### Stakeholder Verification
+- [ ] Updates serve same audience needs as original documentation
+- [ ] Technical depth remains appropriate for intended users
+- [ ] Business context and user value remain clear and accurate
+- [ ] Operational procedures remain actionable and complete
+
+## Success Metrics
+
+**Immediate Indicators**:
+- Only genuinely outdated sections are modified
+- All updates accurately reflect current codebase state
+- Original documentation quality and structure are preserved
+- Cross-document consistency is maintained throughout
+
+**Long-term Value**:
+- Documentation synchronization reduces manual maintenance overhead
+- Stakeholder confidence in documentation accuracy is restored
+- Development team productivity improves through reliable documentation
+- Onboarding and operational efficiency are enhanced through current information
+
+Execute this protocol systematically, ensuring each phase builds comprehensive understanding before implementing selective, precise updates to the existing documentation suite.

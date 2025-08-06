@@ -1,0 +1,261 @@
+---
+alwaysApply: true
+---
+# Modern Code Style & Architecture Standards
+
+## Core Principles
+
+### Performance & Maintainability
+- Optimize for performance, maintainability, readability, and modularity
+- Use framework CLI tools for project setup, code generation, and development tasks
+- Follow framework conventions and best practices for project structure
+- Implement modern build tools and bundlers for optimal delivery
+
+### Resource Optimization & Pragmatism
+- **Balance Technical Excellence with Practical Constraints**: Prioritize solutions that deliver value within time and budget constraints
+- **Start Simple, Scale Smart**: Begin with proven, simple patterns and evolve complexity as needed
+- **Measure Before Optimizing**: Profile performance bottlenecks before implementing complex optimizations
+- **Reuse Over Rebuild**: Leverage existing libraries and frameworks rather than building from scratch
+- **Technical Debt Awareness**: Accept reasonable technical debt when it accelerates delivery of business value
+
+### Modularity & Composition
+- Design well-defined, reusable functions with single, clear purposes
+- Organize codebase across multiple files to reduce complexity
+- Isolate core modules and functionalities into separate files
+- Enforce black-box design through proper encapsulation
+- Use composition over inheritance for flexible code reuse
+
+## Scalability-First Architecture
+
+### Progressive Complexity
+- **Monolithic First**: Start with a well-structured monolith before considering microservices
+- **Database-First Scaling**: Optimize database queries and indexing before adding caching layers
+- **Horizontal Scaling Readiness**: Design for horizontal scaling from day one, even if not immediately needed
+- **Stateless Design**: Keep application state externalized to enable easy scaling
+
+### Resource-Efficient Patterns
+- **Lazy Loading**: Load resources only when needed to reduce initial load times
+- **Connection Pooling**: Reuse database connections to minimize resource overhead
+- **Caching Strategy**: Implement caching at the appropriate level (application, database, CDN)
+- **Async Processing**: Use background jobs for non-critical operations to improve response times
+
+## Modern Documentation Standards
+
+### File Documentation
+- Begin every file with comprehensive comment blocks explaining its purpose and role
+- Document every function with detailed parameter and return type descriptions
+- Use inline comments to clarify non-obvious code segments
+- Include examples and usage patterns in documentation
+- Maintain living documentation that evolves with code changes
+
+### Code Readability
+- Use intuitive naming conventions throughout the codebase
+- Maintain logical, organized structure with consistent formatting
+- Write self-documenting code where possible
+- Use strong typing systems for better developer experience
+- Implement consistent code formatting with automated tools
+
+## Modern Function Design
+
+### RORO Pattern (Receive Object, Return Object)
+- All functions must follow RORO pattern for parameter passing and return values
+- Functions receive a single object parameter containing all required inputs as named properties
+- Functions return an object containing all outputs as named properties
+- This pattern improves readability, maintainability, and flexibility for future changes
+- Use destructuring for cleaner parameter handling
+
+### Function Characteristics
+- Single responsibility principle: each function has one clear purpose
+- Avoid unnecessary fragmentation while maintaining testability
+- Design for reusability and testability with dependency injection
+- Use descriptive function names that clearly indicate purpose
+- Implement pure functions where possible for better testing and caching
+
+## Modern Architecture Guidelines
+
+### Separation of Concerns
+- Clear boundaries between different layers and modules
+- Avoid tight coupling between components using dependency injection
+- Use interfaces and abstract classes for loose coupling
+- Implement proper abstraction layers with clear contracts
+- Separate UI, business logic, and data access layers
+
+### Code Organization
+- Group related functionality together using feature-based organization
+- Use consistent file and folder naming conventions
+- Separate business logic from infrastructure concerns
+- Maintain clear dependency direction (dependencies point inward)
+- Implement hexagonal architecture for better testability
+
+## Modern Design Patterns
+
+### Domain-Driven Design (DDD) Patterns
+- Organize by business domains, not technical layers
+- Self-contained domains with models, services, and repositories
+- Use domain-specific language in naming and documentation
+- Maintain clear domain boundaries with bounded contexts
+
+### Clean Architecture
+- Implement dependency inversion principle
+- Use use cases/interactors for business logic
+- Separate entities from external concerns
+- Maintain independence of frameworks and databases
+
+### Event-Driven Architecture
+- Use events for loose coupling between components
+- Implement event sourcing for audit trails
+- Use message queues for asynchronous processing
+- Design for eventual consistency where appropriate
+
+### Microservices Patterns
+- Design services around business capabilities
+- Use API gateways for external communication
+- Implement circuit breakers for resilience
+- Use distributed tracing for observability
+
+## Modern Testing Strategies
+
+### Test-Driven Development (TDD)
+- Write tests before implementation
+- Use red-green-refactor cycle
+- Maintain high test coverage for critical paths
+- Use behavior-driven development (BDD) for complex scenarios
+
+### Testing Pyramid
+- Unit tests: Fast, isolated, comprehensive
+- Integration tests: Test component interactions
+- End-to-end tests: Critical user journeys only
+- Use mocking and stubbing appropriately
+
+### Modern Testing Tools
+- Use modern testing frameworks for unit testing
+- Implement end-to-end testing tools
+- Use testing libraries for component testing
+- Implement contract testing for microservices
+
+## Modern Error Handling
+
+### Error Management
+- Implement proper error handling and validation
+- Use meaningful error messages with context
+- Handle edge cases appropriately
+- Log errors for debugging and monitoring
+- Use structured logging with correlation IDs
+
+### Resilience Patterns
+- Implement retry mechanisms with exponential backoff
+- Use circuit breakers for external dependencies
+- Implement graceful degradation
+- Use health checks and monitoring
+
+## Modern Performance Optimization
+
+### Performance Best Practices
+- Optimize algorithms and data structures
+- Minimize unnecessary computations
+- Use appropriate caching strategies
+- Profile and optimize bottlenecks
+- Implement lazy loading and code splitting
+
+### Modern Caching Strategies
+- Use in-memory caching for session and application data
+- Implement content delivery networks for static assets
+- Use browser caching with proper headers
+- Implement database query optimization
+
+## Modern Security Practices
+
+### Security Standards
+- Validate all inputs and outputs
+- Implement proper authentication and authorization
+- Use secure coding practices and guidelines
+- Follow the principle of least privilege
+- Implement rate limiting and DDoS protection
+
+### Modern Authentication
+- Use industry-standard authentication protocols
+- Implement secure token-based authentication
+- Use refresh tokens for session management
+- Implement multi-factor authentication
+
+## Modern Development Workflow
+
+### Version Control
+- Use version control systems with meaningful commit messages
+- Implement feature branches with pull requests
+- Use conventional commits for automated changelogs
+- Maintain clean version control history
+
+### CI/CD Pipeline
+- Implement automated testing in continuous integration
+- Use automated deployment with rollback capabilities
+- Implement infrastructure as code
+- Use blue-green deployments for zero downtime
+
+### Code Quality
+- Use static analysis tools for code quality
+- Implement automated code formatting
+- Use pre-commit hooks for quality gates
+- Maintain consistent coding standards across team
+
+## Modern Technology Integration
+
+### API Design
+- Use RESTful principles with proper HTTP methods
+- Implement flexible data fetching patterns
+- Use comprehensive API documentation
+- Implement proper versioning strategies
+
+### Database Design
+- Use appropriate database types for different use cases
+- Implement proper indexing strategies
+- Use database migrations for schema changes
+- Implement connection pooling and optimization
+
+### Cloud-Native Development
+- Use containerization for consistency
+- Implement orchestration for scalability
+- Use cloud services for scalability
+- Implement proper monitoring and observability
+
+## Modern Code Patterns
+
+### Functional Programming
+- Use pure functions where possible
+- Implement immutability for data structures
+- Use higher-order functions for composition
+- Implement functional error handling patterns
+
+### Reactive Programming
+- Use observables for asynchronous operations
+- Implement reactive streams for data flow
+- Use event-driven programming patterns
+- Implement backpressure handling
+
+### Modern Language Features
+- Use modern language features for better expressiveness
+- Implement strong typing systems
+- Use modern build tools and bundlers
+- Implement tree shaking for smaller bundles
+
+## Resource Optimization Guidelines
+
+### Development Efficiency
+- **Framework Leverage**: Maximize use of framework features before building custom solutions
+- **Library Selection**: Choose battle-tested libraries over custom implementations
+- **Code Generation**: Use scaffolding and code generation tools to reduce boilerplate
+- **Incremental Refactoring**: Improve architecture incrementally rather than big-bang rewrites
+
+### Infrastructure Optimization
+- **Right-Sizing**: Start with minimal infrastructure and scale based on actual usage
+- **Cost Monitoring**: Track infrastructure costs and optimize based on usage patterns
+- **Resource Pooling**: Share resources across environments where possible
+- **Automated Scaling**: Implement auto-scaling based on actual demand metrics
+
+### Team Productivity
+- **Knowledge Sharing**: Document decisions and patterns to reduce onboarding time
+- **Tool Standardization**: Use consistent tools across the team to reduce context switching
+- **Code Reviews**: Focus on business logic and security rather than style preferences
+- **Pair Programming**: Use for complex features to improve code quality and knowledge transfer
+
+Keep these modern standards in mind throughout the ENTIRE duration of the request.

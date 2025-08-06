@@ -1,0 +1,271 @@
+
+# Business Simulation MMO - Custom Laravel Architecture Rules
+
+> **Note**: This Laravel application is primarily focused as a **backend API REST** service for the Business Simulation MMO. All architectural decisions and patterns should prioritize API-first design, stateless operations, and RESTful principles.
+
+## Our Custom Architectural Flow
+
+### Request Flow
+```
+Route → Controller → Action → Domain Service → Repository → Model
+```
+
+| Layer | Component | Responsibility | Dependencies | API Focus |
+|-------|-----------|----------------|--------------|-----------|
+| **Presentation** | Routes | REST API routing and request handling | None | RESTful endpoints, versioning |
+| **Presentation** | Controllers | API request/response, validation, JSON formatting | Application Layer (Actions) | JSON responses, HTTP status codes |
+| **Application** | Actions | Business use case orchestration, transaction management | Domain Layer (Services) | Stateless operations, idempotency |
+| **Domain** | Services | Core business logic, business rules enforcement | Infrastructure Layer (Repositories) | Pure business logic, no HTTP concerns |
+| **Infrastructure** | Repositories | Data access abstraction, persistence operations | Models | Database operations, caching |
+| **Infrastructure** | Models | Database mapping, relationships, Eloquent ORM | None | Data persistence, relationships |
+
+### Layer Responsibilities
+
+**Presentation Layer (Routes & Controllers):**
+- **Routes**: REST API routing and request handling
+- **Controllers**: API request/response handling, input validation, JSON response formatting
+- **Responsibilities**: Only API concerns, no business logic, proper HTTP status codes
+
+**Application Layer (Actions):**
+- **Actions**: Business use case orchestration, transaction management, cross-domain coordination
+- **Responsibilities**: Orchestrate domain services, manage transactions, coordinate between domains
+- **API Considerations**: Stateless operations, idempotency, proper error handling for API responses
+- **No Direct Persistence**: Actions should delegate to domain services, not directly access repositories
+
+**Domain Layer (Services & Value Objects):**
+- **Domain Services**: Core business logic, business rules enforcement
+- **Value Objects**: Immutable domain concepts with validation
+- **Responsibilities**: Pure business logic, domain rules, no framework dependencies
+
+**Infrastructure Layer (Repositories & Models):**
+- **Repositories**: Data access abstraction, persistence operations
+- **Models**: Database mapping, relationships, Eloquent ORM
+- **Responsibilities**: Data persistence, external integrations
+
+## Our Business Domain Organization
+
+| Domain | Purpose | Key Components | Examples |
+|--------|---------|----------------|----------|
+| **UserManagement** | User profiles, authentication, and role management | Users, Roles, Permissions | User registration, authentication, role assignment |
+| **OrganizationManagement** | Company and government entities, share classes, industry classifications | Organizations, Share Classes, Industries | Company creation, share issuance, industry classification |
+| **TradingSystem** | Multi-asset trading, order management, portfolio analytics | Orders, Trades, Portfolios | Order placement, trade execution, portfolio tracking |
+| **WorkSystem** | Employment, job management, productivity tracking | Jobs, Employment, Productivity | Job posting, hiring, performance tracking |
+| **WalletSystem** | Financial transactions, currency management, transfers | Wallets, Transactions, Transfers | Money transfers, asset trading, balance management |
+| **CommunicationSystem** | Chat, notifications, messaging infrastructure | Messages, Notifications, Chat | Real-time chat, notifications, messaging |
+
+| Component | Purpose | Examples | Location |
+|-----------|---------|----------|----------|
+| **Entities** | Core business objects with identity | Organization, Trade, Job | `app/Domains/{Domain}/Entities/` |
+| **ValueObjects** | Immutable business concepts | OrganizationType, OrderStatus, CurrencyCode | `app/Domains/{Domain}/ValueObjects/` |
+| **Aggregates** | Consistency boundaries with aggregate roots | OrderAggregate, WalletAggregate | `app/Domains/{Domain}/Aggregates/` |
+| **Repositories** | Data access abstractions with interfaces | WalletRepository, OrganizationRepository | `app/Domains/{Domain}/Repositories/` |
+| **Services** | Domain business logic and orchestration | WalletDomainService, TransferValidationService | `app/Domains/{Domain}/Services/` |
+| **Events** | Domain events for loose coupling | TransferCompleted, OrderPlaced | `app/Domains/{Domain}/Events/` |
+
+## Our Cross-Domain Communication Patterns
+
+| Pattern | Use When | Example | Don't Use | Benefits |
+|---------|----------|---------|-----------|----------|
+| **Adapters** | Cross-domain communication, external system integration, legacy system compatibility | `ShareWalletAdapter` bridges Organization and Wallet domains | Same domain operations, simple data access, internal service communication | Clean separation, loose coupling, external system protection |
+| **Domain Events** | Asynchronous communication between domains, event-driven architecture | `TransferCompleted` event for wallet operations | Synchronous operations, simple data passing | Loose coupling, scalability, audit trails, decoupling |
+
+## Our Database Schema as Source of Truth
+
+### Migration-Driven Development
+- **Database Schema First**: All Eloquent models must exactly match database migration fields
+- **No Imaginary Fields**: Never assume or add fields that don't exist in database schema
+- **Schema Validation**: Verify all model properties exist in corresponding database tables
+- **Migration Authority**: Use migrations to define schema, then generate models
+
+### Model Compliance
+- Models must only contain fields defined in database schema
+- Use proper casting for database field types
+- Implement fillable/guarded arrays based on actual columns
+- Validate relationships against foreign key constraints
+
+## Our RORO Pattern (Receive Object, Return Object)
+
+### Function Signature Standards
+
+| Standard | Requirement | Example |
+|----------|-------------|---------|
+| **Single Parameter** | All functions receive one object parameter | `function handle(array $params): array` |
+| **Named Properties** | Use descriptive property names for inputs | `['user_id' => 123, 'amount' => 1000]` |
+| **Return Objects** | Return structured objects with named properties | `['success' => true, 'data' => $result]` |
+| **Type Safety** | Use strict typing for all parameters and returns | `public function create(array $params): array` |
+
+### Implementation Guidelines
+- Functions must follow RORO pattern for parameter passing
+- Return objects contain all outputs as named properties
+- Use descriptive property names that clearly indicate purpose
+- Maintain consistency across all function signatures
+
+## Our Action Pattern Implementation
+
+### Laravel Actions Integration
+- **Use Laravel Actions** for business logic that can be executed in multiple contexts
+- **Single Responsibility**: Each action handles one specific business task
+- **Multi-Context Execution**: Implement `asController`, `asJob`, `asListener`, `asCommand` methods as needed
+- **Pure Business Logic**: Keep the `handle` method focused on domain logic without framework concerns
+- **Bridge Pattern**: Use actions to connect domain services with framework layers
+
+### Action Structure
+```php
+class ExecuteTradeOrder
+{
+    use AsAction;
+
+    public function handle(array $params): array
+    {
+        // Pure business logic - no framework dependencies
+        // Follow RORO pattern
+        $trader = $params['trader'];
+        $assetType = $params['asset_type'];
+        $side = $params['side'];
+        $quantity = $params['quantity'];
+        $price = $params['price'];
+
+        return $this->tradingService->executeOrder($trader, $assetType, $side, $quantity, $price);
+    }
+
+    public function asController(Request $request): JsonResponse
+    {
+        $result = $this->handle([
+            'trader' => $request->user(),
+            'asset_type' => $request->get('asset_type'),
+            'side' => $request->get('side'),
+            'quantity' => $request->get('quantity'),
+            'price' => $request->get('price')
+        ]);
+
+        // API-specific response formatting
+        return response()->json([
+            'success' => $result['success'] ?? true,
+            'data' => $result['data'] ?? $result,
+            'message' => $result['message'] ?? 'Operation completed successfully'
+        ], $result['success'] ? 200 : 400);
+    }
+
+    public function asJob(ExecuteTradeOrderJob $job): void
+    {
+        $this->handle([
+            'trader' => $job->trader,
+            'asset_type' => $job->assetType,
+            'side' => $job->side,
+            'quantity' => $job->quantity,
+            'price' => $job->price
+        ]);
+    }
+}
+```
+
+### Action Naming Conventions
+
+| Convention | Pattern | Examples | Notes |
+|------------|---------|----------|-------|
+| **Action Names** | Descriptive verbs in present tense | `ExecuteTradeOrder`, `CreateCompany`, `ProcessPayment` | Use action-oriented naming |
+| **Method Names** | `asX` pattern for context-specific implementations | `asController`, `asJob`, `asListener`, `asCommand` | Context-specific entry points |
+| **Domain Alignment** | Align with business domain boundaries | `CreateOrganization`, `TransferAssets`, `ValidateTransfer` | Match domain concepts |
+| **RORO Compliance** | Follow RORO pattern in `handle` method parameters | `handle(array $params): array` | Single parameter, structured return |
+
+### Integration with DDD
+- **Domain Services**: Actions can orchestrate domain services
+- **Repository Access**: Actions should delegate to domain services, not directly access repositories
+- **Event Dispatching**: Actions can trigger domain events
+- **Cross-Domain Coordination**: Actions can coordinate between different domains
+
+## Our Repository Pattern Implementation
+
+### Repository Responsibilities
+
+| Responsibility | Purpose | Example |
+|----------------|---------|---------|
+| **Data Access Abstraction** | Abstract data access from domain logic | `WalletRepositoryInterface` hides Eloquent implementation |
+| **Query Encapsulation** | Encapsulate complex queries and data access logic | Complex queries in repository methods, not in services |
+| **Domain Alignment** | Align with domain concepts and business rules | Repository methods match domain operations |
+| **Interface Contracts** | Define clear contracts for data access operations | Interface defines what operations are available |
+
+### Repository Structure
+```php
+interface WalletRepositoryInterface
+{
+    public function create(array $params): array;
+    public function findById(string $id): ?array;
+    public function findByHolderAndAssetType(array $params): ?array;
+    public function updateBalance(string $id, int $balance): bool;
+}
+
+class WalletRepository implements WalletRepositoryInterface
+{
+    public function create(array $params): array
+    {
+        // Implementation using Eloquent models
+        $wallet = Wallet::create($params);
+        return $this->walletToArray($wallet);
+    }
+}
+```
+
+## Our Service Provider Configuration
+
+### Dependency Injection Bindings
+
+| Binding Type | Purpose | Example |
+|--------------|---------|---------|
+| **Repository Bindings** | Bind repository interfaces to concrete implementations | `WalletRepositoryInterface` → `WalletRepository` |
+| **Service Bindings** | Bind domain services to concrete implementations | `WalletDomainService` → `WalletDomainService` |
+| **Adapter Bindings** | Bind adapter interfaces to concrete implementations | `WalletAdapterInterface` → `ShareWalletAdapter` |
+| **Action Bindings** | Bind actions for dependency injection | `CreateWallet` → `CreateWallet` |
+
+### Example Configuration
+```php
+// AppServiceProvider.php
+public function register(): void
+{
+    // Repository bindings
+    $this->app->bind(WalletRepositoryInterface::class, WalletRepository::class);
+
+    // Service bindings
+    $this->app->bind(WalletDomainService::class, WalletDomainService::class);
+
+    // Adapter bindings
+    $this->app->bind(WalletAdapterInterface::class, ShareWalletAdapter::class);
+}
+```
+
+## Our API Response Standards
+
+### API Response Format
+
+| Response Type | Structure | HTTP Status | Example |
+|---------------|-----------|-------------|---------|
+| **Success** | `{success: true, data: {...}, message: "..."}` | 200/201 | Resource created/retrieved |
+| **Validation Error** | `{success: false, errors: {...}, message: "..."}` | 422 | Invalid input data |
+| **Not Found** | `{success: false, message: "Resource not found"}` | 404 | Resource doesn't exist |
+| **Unauthorized** | `{success: false, message: "Unauthorized"}` | 401 | Authentication required |
+| **Server Error** | `{success: false, message: "Internal server error"}` | 500 | Unexpected error |
+
+## Our Testing Strategy
+
+### Layer-Specific Testing
+
+| Test Type | Purpose | Scope | Example |
+|-----------|---------|-------|---------|
+| **Unit Tests** | Test individual components in isolation | Single class/method | Test `TransferValidationService` methods |
+| **Integration Tests** | Test interactions between layers | Multiple components | Test Action → Service → Repository flow |
+| **API Tests** | Test complete API endpoints | End-to-end API scenarios | Test complete API workflow |
+| **Feature Tests** | Test complete user workflows | End-to-end scenarios | Test complete transfer workflow |
+| **Domain Tests** | Test business logic and domain rules | Business rules validation | Test transfer validation rules |
+
+### Test Organization
+
+| Aspect | Best Practice | Example |
+|--------|---------------|---------|
+| **Test Location** | Co-locate tests with source code | `app/Domains/Wallet/Services/TransferValidationServiceTest.php` |
+| **Test Naming** | Use descriptive test names that explain the scenario | `test_should_fail_validation_when_different_asset_classes()` |
+| **Test Structure** | Follow Arrange-Act-Assert pattern | Arrange test data → Act on method → Assert results |
+| **Mock Strategy** | Mock external dependencies, not internal domain logic | Mock repositories, not domain services |
+| **API Testing** | Test HTTP status codes and response structure | `$response->assertStatus(201)->assertJsonStructure(['success', 'data'])` |
+
+- **Event Dispatching**: Actions can trigger domain events
+- **Cross-Domain Coordination**: Actions can coordinate between different domains

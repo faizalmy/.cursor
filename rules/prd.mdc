@@ -1,0 +1,185 @@
+---
+alwaysApply: true
+---
+
+# Business Simulation MMO - Product Overview
+
+## What We're Building
+
+A multiplayer business simulation game where players create and manage companies, trade assets, participate in corporate governance, and compete in a dynamic economic environment. Think "SimCity meets Wall Street" in a persistent online world.
+
+## Core Game Experience
+
+### Company Management
+- **Create & Run Companies**: Start your own business empire from scratch
+- **Shareholder System**: Issue shares, manage ownership, and handle investor relations
+- **Corporate Governance**: Hold board meetings, vote on major decisions, and shape company policy
+- **Financial Management**: Track profits, manage expenses, and grow your business value
+
+### Trading & Markets
+- **Asset Trading**: Buy and sell stocks, bonds, and commodities in real-time markets
+- **Portfolio Management**: Build diverse investment portfolios and track performance
+- **Market Dynamics**: Experience supply and demand, price fluctuations, and market volatility
+- **Trading History**: Complete transaction records and performance analytics
+
+### Work & Employment
+- **Job Creation**: Post job openings and hire talented employees
+- **Career Progression**: Work for other companies, build skills, and advance your career
+- **Salary Management**: Negotiate compensation and manage payroll
+- **Performance Tracking**: Monitor productivity and employee satisfaction
+
+### Social & Governance
+- **Real-time Chat**: Communicate with other players and company members
+- **Government System**: Participate in economic policy, taxation, and regulation
+- **Achievement System**: Unlock milestones and showcase your business success
+- **Global Community**: Connect with players worldwide in multiple languages
+
+## Target Audience
+
+### Primary Users
+- **Business Enthusiasts**: People interested in entrepreneurship and corporate management
+- **Strategy Gamers**: Players who enjoy complex simulation and economic games
+- **Finance Learners**: Students and professionals wanting to understand markets
+- **Social Gamers**: Players who enjoy multiplayer interaction and collaboration
+
+### User Demographics
+- **Age Range**: 18-45 years old
+- **Education**: High school to graduate level
+- **Interests**: Business, finance, strategy games, social interaction
+- **Geographic**: Global audience with multi-language support
+
+## Key Features
+
+### Phase 1: Foundation
+- User accounts and profiles
+- Basic company creation
+- Simple trading system
+- Job posting and hiring
+
+### Phase 2: Core Systems
+- Enhanced company management
+- Advanced trading features
+- Employee management
+- Basic governance
+
+### Phase 3: Real-time Features
+- Live chat and messaging
+- Real-time market updates
+- Instant notifications
+- Live trading floors
+
+### Phase 4: Advanced Features
+- Corporate governance meetings
+- Government and taxation
+- Achievement system
+- Analytics and reporting
+
+### Phase 5: Global Expansion
+- Multi-language support
+- Regional adaptations
+- Cultural customization
+- Global marketplace
+
+## Business Model
+
+### Revenue Streams
+- **Premium Subscriptions**: Enhanced features and analytics
+- **Virtual Currency**: In-game purchases and transactions
+- **Donation System**: Support platform development
+- **Educational Partnerships**: Business school and training programs
+
+### Monetization Strategy
+- **Freemium Model**: Basic features free, premium features paid
+- **Non-Pay-to-Win**: All purchases are cosmetic or convenience-based
+- **Educational Value**: Real business learning without financial risk
+- **Community Focus**: Revenue reinvested in platform development
+
+## Success Metrics
+
+### User Engagement
+- **Active Users**: 10,000+ daily active players
+- **Session Length**: Average 2+ hours per session
+- **Retention**: 70% monthly retention rate
+- **Growth**: 20% month-over-month user growth
+
+### Business Metrics
+- **Companies Created**: 5,000+ active companies
+- **Trading Volume**: $1M+ daily trading volume
+- **Job Placements**: 10,000+ successful hires
+- **Community Activity**: 50,000+ daily messages
+
+### Platform Performance
+- **Uptime**: 99.9% availability
+- **Response Time**: <100ms for real-time features
+- **Scalability**: Support 100,000+ concurrent users
+- **Global Reach**: Available in 10+ languages
+
+## Competitive Advantages
+
+### Unique Value Proposition
+- **Real Business Learning**: Practical experience without financial risk
+- **Social Business Network**: Connect with like-minded entrepreneurs
+- **Dynamic Economy**: Player-driven markets and economic systems
+- **Educational Focus**: Bridge between gaming and real business skills
+
+### Market Differentiation
+- **Not Just a Game**: Serious business simulation with educational value
+- **Community-Driven**: Player-created content and economic systems
+- **Global Scale**: Multi-language support for international markets
+- **Professional Network**: Real business connections and opportunities
+
+## Development Phases
+
+### Phase 1: Foundation
+- Basic systems operational
+- Core user functionality
+- Essential game mechanics
+
+### Phase 2: Core Systems
+- Company and trading systems
+- Enhanced user experience
+- Advanced game features
+
+### Phase 3: Real-time Features
+- Live interaction and updates
+- Real-time communication
+- Dynamic market systems
+
+### Phase 4: Advanced Features
+- Governance and analytics
+- Advanced business tools
+- Comprehensive reporting
+
+### Phase 5: Global Expansion
+- Multi-language and regional features
+- International market support
+- Cultural adaptations
+
+## Vision & Mission
+
+### Vision
+To create the world's most engaging business simulation platform that makes entrepreneurship and financial literacy accessible to everyone through gamified learning and real-world application.
+
+### Mission
+- **Democratize Business Education**: Make business knowledge accessible to all
+- **Build Global Community**: Connect entrepreneurs and business enthusiasts worldwide
+- **Bridge Theory and Practice**: Provide hands-on experience without financial risk
+- **Foster Innovation**: Create an environment where business ideas can flourish
+
+## Impact Goals
+
+### Educational Impact
+- **Skill Development**: Help users develop real business and financial skills`
+- **Career Preparation**: Prepare students and professionals for business careers
+- **Entrepreneurship**: Inspire and support new business ventures
+- **Financial Literacy**: Improve understanding of markets and economics
+
+### Community Impact
+- **Global Network**: Connect business professionals worldwide
+- **Knowledge Sharing**: Facilitate learning and mentorship
+- **Innovation Hub**: Support creative business solutions
+- **Economic Education**: Promote understanding of economic systems
+
+---
+
+**Document Purpose**: This simplified overview focuses on the product vision, user experience, and business value without technical implementation details. For technical specifications, see the detailed PRD documentation.

@@ -1,0 +1,133 @@
+---
+alwaysApply: false
+---
+# Instructions: Comprehensive Codebase Documentation Generator
+
+You are tasked with creating complete, professional documentation for an existing codebase. Your goal is to transform scattered technical implementations into a structured documentation suite that serves developers, stakeholders, and operational teams.
+
+## Analysis Protocol
+
+Execute the following phases sequentially, ensuring completeness at each stage:
+
+### Phase 1: DISCOVERY
+**Objective**: Map the codebase structure and identify key components.
+
+**Actions Required**:
+- Identify all entry points (main files, configuration files, package.json, requirements.txt, etc.)
+- Catalog directory structure and file organization patterns
+- Locate core modules, utilities, and shared components
+- Identify external dependencies and integrations
+- Document build systems, testing frameworks, and deployment configurations
+
+**Output**: Create a hierarchical overview of the codebase structure with component classifications.
+
+### Phase 2: ARCHITECTURE ANALYSIS
+**Objective**: Understand system design and component relationships.
+
+**Actions Required**:
+- Map data flow between major components
+- Identify design patterns and architectural decisions
+- Document API endpoints, database schemas, and external integrations
+- Analyze configuration management and environment handling
+- Trace user request/data processing workflows
+
+**Output**: Generate technical architecture documentation with component interaction diagrams.
+
+### Phase 3: FEATURE EXTRACTION
+**Objective**: Document user-facing functionality and business logic.
+
+**Actions Required**:
+- Identify distinct features and user workflows
+- Extract business rules and validation logic
+- Document user interfaces and interaction patterns
+- Map features to underlying technical implementation
+- Identify configuration options and customization capabilities
+
+**Output**: Create feature-specific documentation linking business value to technical implementation.
+
+### Phase 4: OPERATIONAL ASSESSMENT
+**Objective**: Document deployment, monitoring, and maintenance procedures.
+
+**Actions Required**:
+- Analyze deployment configurations and requirements
+- Identify monitoring, logging, and error handling mechanisms
+- Document database migrations, backup procedures, and disaster recovery
+- Extract environment-specific configurations and scaling considerations
+- Identify maintenance tasks, update procedures, and troubleshooting guides
+
+**Output**: Generate operational runbooks and deployment guides.
+
+## Quality Standards
+
+**Completeness Requirements**:
+- Every major component must be documented
+- All user-facing features must have clear explanations
+- Setup instructions must enable successful deployment
+- Architecture documentation must support informed technical decisions
+
+**Clarity Requirements**:
+- Use clear, jargon-free language where possible
+- Include code examples and configuration samples
+- Provide context for technical decisions and trade-offs
+- Link related concepts and cross-reference between documents
+
+**Accuracy Requirements**:
+- Verify all setup instructions are current and functional
+- Ensure code examples match actual implementation
+- Validate that architectural descriptions align with codebase structure
+- Cross-check feature descriptions against actual functionality
+
+**Maintainability Requirements**:
+- Use consistent formatting and organization patterns
+- Include version information and last-updated dates
+- Structure content for easy updates as code evolves
+- Provide clear ownership and maintenance responsibilities
+
+## Analysis Techniques
+
+**Code Pattern Recognition**:
+- Identify common architectural patterns (MVC, microservices, event-driven, etc.)
+- Recognize framework-specific conventions and best practices
+- Extract reusable components and shared utilities
+- Document design decisions and their rationale
+
+**Business Logic Extraction**:
+- Trace user workflows from interface to data persistence
+- Identify validation rules, business constraints, and processing logic
+- Map feature functionality to user value and business objectives
+- Document configuration-driven behavior and customization points
+
+**Dependency Analysis**:
+- Map internal module dependencies and coupling patterns
+- Document external service integrations and API contracts
+- Identify configuration dependencies and environment requirements
+- Analyze build-time vs runtime dependencies
+
+## Validation Checklist
+
+Before completing documentation, verify:
+
+- [ ] New team member can successfully set up development environment using SETUP.md
+- [ ] All major features are documented with business context and technical implementation
+- [ ] Architecture documentation enables informed technical decision-making
+- [ ] Deployment guide supports reliable production deployments
+- [ ] Cross-references between documents are accurate and helpful
+- [ ] Code examples are tested and current
+- [ ] Non-technical stakeholders can understand system capabilities from README.md
+- [ ] Operational procedures support reliable system maintenance
+
+## Success Metrics
+
+**Immediate Indicators**:
+- Documentation covers 100% of major system components
+- Setup instructions result in functional development environment
+- Feature documentation connects user value to technical implementation
+- Architecture documentation supports technical planning decisions
+
+**Long-term Indicators**:
+- Reduced onboarding time for new team members
+- Decreased time spent on code archaeology and reverse engineering
+- Improved stakeholder understanding of system capabilities
+- Enhanced ability to plan technical improvements and refactoring
+
+Execute this analysis systematically, ensuring each phase builds upon the previous one to create comprehensive, accurate, and maintainable codebase documentation.
