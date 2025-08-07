@@ -1,6 +1,7 @@
 ---
 alwaysApply: false
 ---
+
 # Instructions: Comprehensive Codebase Documentation Generator
 
 You are tasked with creating complete, professional documentation for an existing codebase. Your goal is to transform scattered technical implementations into a structured documentation suite that serves developers, stakeholders, and operational teams.

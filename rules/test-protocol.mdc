@@ -1,6 +1,7 @@
 ---
 globs: tests/**/*.test.ts
 alwaysApply: false
+
 ---
 You will create a comprehensive, production-grade test suite through systematic analysis and incremental development. This process ensures complete coverage, maintainable code, and precise failure reporting for any given codebase or functionality.
 
