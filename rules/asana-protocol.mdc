@@ -1,0 +1,133 @@
+---
+alwaysApply: false
+---
+# 📋 Faizal's Task Management System - 3-Mode Protocol
+
+When managing tasks from Telegram to Asana, you must adhere to the following strict protocol to ensure proper task capture, organization, and execution. Your actions must be constrained by explicit mode instructions to prevent unauthorized changes.
+
+## Protocol
+
+- **Mode Transitions:**
+  - **Restriction:** You will start in 'ANALYZE' mode, and only transition modes when explicitly told using the key phrases `MODE PLAN` or `MODE EXECUTE`.
+  - **Important:** You must declare your current mode and your current LLM model version at the beginning of every response.
+
+- **Modes and Their Rules:**
+
+  - **MODE 1: ANALYZE**
+    - **Purpose:** Extract and analyze Telegram messages to identify actionable instructions.
+    - **Allowed:** Running telegram extractor, reading message files, identifying actionable content, analyzing message context, checking Asana for existing tasks and comments using MCP.
+    - **Forbidden:** Creating tasks, planning task details, or modifying Asana content.
+    - **Output:** Message analysis summary with actionable instruction count, content identification, and duplicate detection results.
+
+  - **MODE 2: PLAN**
+    - **Purpose:** Create detailed task plans and validate configuration without creating actual tasks.
+    - **Allowed:** Planning task titles, descriptions, priorities, validating configuration, using duplicate analysis from ANALYZE mode.
+    - **Forbidden:** Creating, updating, or modifying Asana tasks, applying tags, or any direct Asana changes.
+    - **Output:** Comprehensive task plans with titles, descriptions, priorities, and action decisions based on duplicate analysis.
+
+  - **MODE 3: EXECUTE**
+    - **Purpose:** Implement planned Asana task creation and updates based on approved plans.
+    - **Allowed:** Creating new tasks, updating existing tasks, adding comments, applying tags, using planned content only.
+    - **Forbidden:** Creating unplanned tasks, modifying content beyond planned changes, deleting existing tasks, creating duplicate comments.
+    - **Output:** Execution summary with success count, error reports, and completion status.
+
+- **General Notes:**
+  - You are not permitted to act outside of these defined modes.
+  - In all modes, avoid making assumptions or independent decisions; follow explicit instructions only.
+  - If any uncertainty arises, ask clarifying questions before proceeding.
+
+---
+
+# ⚙️ System Configuration
+
+## Asana Configuration
+- **Workspace ID:** `25035137390881` (KeenThemes)
+- **Project ID:** `331862917763706` (Metronic)
+- **Section ID:** `1210964027667547` (Metronic 9.2.4 Release)
+- **Assignee:** Faizal (User ID: `30378959115834`, Email: jai.crys@gmail.com)
+
+## Tag System
+- **Pending Tag:** `1200654723887772` (Initial status)
+- **Done Tag:** `1200678531309231` (Completion status)
+- **Rule:** NEVER mark tasks as completed - use tags only
+
+## Telegram Configuration
+- **Chat ID:** 83292459 (Shuh)
+- **Extractor Script:** `tasks/telegram_extractor.py`
+- **Output Format:** `telegram_messages_Shuh_YYYYMMDD.md`
+
+---
+
+# 📋 Task Format Standards
+
+## Description Template
+```
+Priority: [High/Medium]
+
+- [Action item 1]
+- [Action item 2]
+- [Action item 3]
+```
+
+## Datetime Format (UTC Required)
+- **Format:** YYYY-MM-DD HH:MM UTC (e.g., "2025-08-05 05:32 UTC")
+- **Usage:** Task updates, comments, due dates
+- **Rule:** Never use local timezone or omit timezone
+
+## Format Rules
+**✅ DO:**
+- Use bullet points for action items
+- Include Priority level (High/Medium)
+- Keep descriptions concise and actionable
+- Use UTC timezone for all timestamps
+- Post strictly into "Metronic 9.2.4 Release" section
+
+**❌ DO NOT:**
+- Include "Status: Pending" in description
+- Include "Instructions from Shuh:" prefix
+- Mention individual names in descriptions/comments
+- Post tasks in any other section
+- Use local timezone references
+- Process general tasks without specific actions
+- Process non-specific future plans or ideas
+
+---
+
+# ⚠️ Critical Rules
+
+## Task Management
+- **NEVER** delete any Asana tasks
+- **NEVER** mark tasks as completed - use tags only
+- **ALWAYS** preserve complete audit trail
+- **ONLY** process instructions from Shuh (ID: 83292459)
+- **ONLY** process specific, actionable tasks with clear deliverables
+- **EXCLUDE** general discussions, future plans, or non-specific ideas
+- **CHECK** for existing tasks and comments before creating new ones
+- **AVOID** duplicate tasks and redundant comments
+
+## Section Compliance
+- **MANDATORY:** All tasks must go to "Metronic 9.2.4 Release" (ID: 1210964027667547)
+- **VALIDATION:** Verify section placement after task creation
+- **ROLLBACK:** Move tasks to correct section if misplaced
+
+## Privacy & Communication
+- **NEVER** mention individual names in task descriptions or comments
+- **ALWAYS** use professional, structured format
+- **FOCUS** on actionable content, not conversation context
+- **PRIORITIZE** specific tasks with clear deliverables and deadlines
+
+---
+
+# 📁 File Locations
+
+## Scripts & Tools
+- **Extractor Script:** `tasks/telegram_extractor.py`
+- **Rules File:** `.cursor/rules/asana.mdc`
+
+## Output Files
+- **Message Files:** `telegram_messages_Shuh_YYYYMMDD.md`
+- **Format:** Markdown with UTC timestamps and sender info
+- **Naming Convention:** Consistent UTC-based extraction timestamps
+- **Timezone:** All timestamps in UTC for consistency with task management
+- **Sorting:** Files naturally sort chronologically by extraction time
+- **Metadata:** Includes extraction time, message range, chat ID, and message count
