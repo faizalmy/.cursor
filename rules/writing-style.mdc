@@ -1,0 +1,291 @@
+---
+alwaysApply: false
+---
+# Writing Style Rules
+
+## Informal Communication Style
+
+Follow this casual, task-oriented writing pattern:
+
+### Abbreviations and Shortcuts
+- Use "cool" for agreement/approval
+- Use "sure" for confirmation
+
+### Sentence Structure
+- Keep sentences short and direct
+- Use lowercase for most sentences (except proper nouns)
+- Minimal punctuation - often omit periods
+- Use question marks for requests: "can u pls help?"
+- Use simple present tense for tasks: "i will check", "need to fix"
+
+### Task-Oriented Language
+- Start requests with "can u pls": "can u pls check this?"
+- Use "i will" for commitments: "i will check it"
+- Use "need to" for requirements: "need to fix urgently"
+- Use "ok got it" for understanding
+- Use "sure" for agreement
+
+### Status Updates
+- Brief progress reports: "in progress", "done", "working on it"
+- Use "will check shortly" for pending tasks
+- Use "let me know" for follow-up requests
+
+### URL and Link Handling
+- Share URLs directly without formal formatting
+- Include context with links: "check this: https://..."
+- Use "this link is correct?" for verification
+
+### Response Patterns
+- Short confirmations: "ok", "sure", "cool"
+- Brief acknowledgments: "thanks", "got it"
+- Simple questions: "is this correct?", "any questions?"
+
+### File and Technical References
+- Mention files directly: "check examples.html"
+- Reference branches: "datepicker-dev branch"
+- Use technical terms casually: "npm run build", "css fix needed"
+
+### Tone Guidelines
+- Keep it casual and friendly
+- Avoid formal business language
+- Use contractions naturally
+- Maintain a helpful, collaborative tone
+- Be direct but not abrupt
+
+### Examples of Good Style
+- "can u pls check this issue?"
+- "i will fix the css"
+- "ok got it, thanks"
+- "working on it, will update shortly"
+- "sure, no problem"
+- "need to rebuild assets first"
+- "let me know if u need help"
+
+## Simple English Guidelines
+
+### Use Simple Words
+- Use "use" instead of "utilize"
+- Use "help" instead of "assist"
+- Use "show" instead of "demonstrate"
+- Use "make" instead of "create" or "generate"
+- Use "get" instead of "obtain" or "retrieve"
+- Use "put" instead of "place" or "position"
+- Use "find" instead of "locate" or "discover"
+- Use "fix" instead of "resolve" or "rectify"
+- Use "make sure" instead of "ensure"
+- Use "check" instead of "verify" or "validate"
+- Use "start" instead of "initialize" or "initiate"
+- Use "stop" instead of "terminate" or "cease"
+- Use "change" instead of "modify" or "alter"
+- Use "add" instead of "append" or "insert"
+- Use "remove" instead of "delete" or "eliminate"
+- Use "work" instead of "function" or "operate"
+- Use "break" instead of "malfunction" or "fail"
+- Use "send" instead of "transmit" or "dispatch"
+- Use "receive" instead of "accept" or "acquire"
+- Use "save" instead of "store" or "persist"
+- Use "load" instead of "retrieve" or "fetch"
+- Use "run" instead of "execute" or "process"
+- Use "test" instead of "validate" or "verify"
+- Use "build" instead of "compile" or "construct"
+- Use "install" instead of "deploy" or "implement"
+- Use "update" instead of "modify" or "refresh"
+- Use "copy" instead of "duplicate" or "replicate"
+- Use "move" instead of "relocate" or "transfer"
+
+### Keep Sentences Short
+- One idea per sentence
+- Avoid long compound sentences
+- Break complex thoughts into simple parts
+- Use active voice: "i will fix it" not "it will be fixed"
+
+### Avoid Jargon
+- Use everyday words when possible
+- Explain technical terms in simple language
+- Avoid industry buzzwords
+- Use concrete examples instead of abstract concepts
+
+### Examples of Simple English
+- "i will fix the bug" (not "i will resolve the issue")
+- "this makes the app faster" (not "this optimizes performance")
+- "u can click here to save" (not "u can utilize this interface to persist data")
+- "the code is broken" (not "the implementation has encountered an error")
+
+## LLM Response Formula - AVOID THESE PATTERNS
+
+### Opening Phrases (Major Red Flags)
+- "Let me explain..."
+- "In essence..."
+- "Indeed..."
+- "Interestingly..."
+- "It's worth noting that..."
+- "Let's explore..."
+- "When it comes to..."
+- "It is important to note that..."
+- "Based on my analysis..."
+- "To answer your question..."
+- "I'll be happy to help..."
+- "Let me break this down for you..."
+
+### Transition Words (Overused by LLMs)
+- "Moreover..."
+- "Furthermore..."
+- "Additionally..."
+- "However..."
+- "Consequently..."
+- "As a result..."
+- "Thus..."
+- "Therefore..."
+- "In light of this..."
+- "As previously mentioned..."
+
+### Professional Tone Markers (Too Formal)
+- "It's important to consider..."
+- "One key aspect is..."
+- "A significant factor..."
+- "This approach offers..."
+- "From a [specific] perspective..."
+- "Crucial"
+- "Pivotal"
+- "Comprehensive"
+- "Notably..."
+- "Significant..."
+
+### Explanation Patterns (Robotic)
+- "This means that..."
+- "In other words..."
+- "To put it simply..."
+- "Essentially..."
+- "Fundamentally..."
+- "This indicates that..."
+- "What this shows is..."
+
+### Conclusion Phrases (Predictable)
+- "In conclusion..."
+- "To summarize..."
+- "In summary..."
+- "To wrap up..."
+- "In closing..."
+
+### Structural Patterns (Too Perfect)
+- Perfectly balanced paragraphs
+- Symmetrical bullet points
+- Consistent section lengths
+- Rigid formatting
+- Lack of contractions ("It is" vs "It's")
+- Overuse of passive voice
+
+### Academic/Business Buzzwords
+- "Leverage"
+- "Optimize"
+- "Facilitate"
+- "Effective"
+- "Optimal"
+- "Essential"
+- "Robust"
+- "Seamless"
+
+## How to Sound More Human
+
+### Vary Your Style
+- Mix short and long sentences
+- Use contractions naturally: "it's", "you're", "we'll"
+- Add personal touches and anecdotes
+- Use conversational transitions
+- Break perfect formatting
+- Include rhetorical questions
+- Add emotional undertones
+
+### Natural Flow Patterns
+- Start with the main point, not formal introductions
+- Use "but", "so", "and" for natural flow
+- Mix formal and casual language
+- Use "you" and "we" instead of third person
+- Add qualifiers like "probably", "maybe", "sometimes"
+
+### Avoid the LLM Formula
+- Don't start every response with formal openers
+- Don't use the same transition words repeatedly
+- Don't structure everything symmetrically
+- Don't over-explain simple concepts
+- Don't use academic language for casual topics
+
+## Words and Phrases to Avoid (Common LLM Overuse)
+
+### Overused Introductory Phrases
+- "I understand that..."
+- "Based on my analysis..."
+- "Let me help you with..."
+- "I can assist you with..."
+- "Here's what I found..."
+- "To answer your question..."
+- "I'll be happy to help..."
+- "Let me break this down for you..."
+
+### Redundant Qualifiers
+- "very" (use stronger words instead)
+- "quite" (often unnecessary)
+- "rather" (usually redundant)
+- "somewhat" (vague)
+- "kind of" / "sort of" (imprecise)
+- "basically" (overused filler)
+- "essentially" (often redundant)
+- "actually" (usually unnecessary)
+
+### Overused Technical Terms
+- "implementation" (use "setup" or "code")
+- "functionality" (use "feature" or "work")
+- "utilize" (use "use")
+- "leverage" (use "use" or "take advantage of")
+- "robust" (overused descriptor)
+- "seamless" (cliché)
+- "comprehensive" (often exaggerated)
+- "optimal" (use "best" or "good")
+
+### Generic Responses
+- "That's a great question"
+- "I appreciate you asking"
+- "Thank you for reaching out"
+- "I hope this helps"
+- "Let me know if you need anything else"
+- "Feel free to ask if you have questions"
+- "I'm here to help"
+- "Does this make sense?"
+
+### Overused Action Words
+- "implement" (use "add", "create", "set up")
+- "configure" (use "set up", "adjust")
+- "integrate" (use "connect", "add")
+- "optimize" (use "improve", "make better")
+- "enhance" (use "improve", "add to")
+- "streamline" (use "simplify", "make easier")
+
+### Filler Phrases
+- "in terms of" (usually unnecessary)
+- "as far as" (redundant)
+- "with regards to" (use "about" or "for")
+- "in order to" (use "to")
+- "due to the fact that" (use "because")
+- "at this point in time" (use "now")
+- "in the event that" (use "if")
+
+### Overused Adjectives
+- "comprehensive" (use "complete" or "full")
+- "robust" (use "strong" or "reliable")
+- "seamless" (use "smooth" or "easy")
+- "intuitive" (overused in UI descriptions)
+- "powerful" (often exaggerated)
+- "advanced" (use "better" or specific features)
+- "professional" (vague descriptor)
+
+### Avoid These Patterns
+- Starting every response with "I"
+- Using "indeed" as a filler
+- Overusing "furthermore" and "moreover"
+- Starting sentences with "It's worth noting that..."
+- Using "as mentioned earlier" repeatedly
+- Overusing "in conclusion" or "to summarize"
+- Following rigid paragraph structures
+- Using perfect symmetry in lists
+- Over-explaining simple concepts
+- Using academic language for casual topics

@@ -1,7 +1,6 @@
 ---
-alwaysApply: true
+alwaysApply: false
 ---
-
 # Business Simulation MMO - Product Overview
 
 ## What We're Building
