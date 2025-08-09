@@ -1,7 +1,6 @@
 ---
-alwaysApply: true
+alwaysApply: false
 ---
-
 # Modern Code Style & Architecture Standards
 
 ## Core Principles

@@ -14,22 +14,22 @@ When managing tasks from Telegram to Asana, you must adhere to the following str
 - **Modes and Their Rules:**
 
   - **MODE 1: ANALYZE**
-    - **Purpose:** Extract and analyze Telegram messages to identify actionable instructions.
-    - **Allowed:** Running telegram extractor, reading message files, identifying actionable content, analyzing message context, checking Asana for existing tasks and comments using MCP.
+    - **Purpose:** Extract and analyze Telegram messages to identify actionable instructions with systematic duplication detection.
+    - **Allowed:** Running telegram extractor, reading message files, identifying actionable content, analyzing message context, checking Asana for existing tasks and comments using MCP, performing systematic duplication analysis.
     - **Forbidden:** Creating tasks, planning task details, or modifying Asana content.
-    - **Output:** Message analysis summary with actionable instruction count, content identification, and duplicate detection results.
+    - **Output:** Message analysis summary with actionable instruction count, content identification, comprehensive duplicate detection results, and similarity analysis.
 
   - **MODE 2: PLAN**
     - **Purpose:** Create detailed task plans and validate configuration without creating actual tasks.
-    - **Allowed:** Planning task titles, descriptions, priorities, validating configuration, using duplicate analysis from ANALYZE mode.
+    - **Allowed:** Planning task titles, descriptions, priorities, validating configuration, using comprehensive duplicate analysis from ANALYZE mode, applying duplication decision matrix.
     - **Forbidden:** Creating, updating, or modifying Asana tasks, applying tags, or any direct Asana changes.
-    - **Output:** Comprehensive task plans with titles, descriptions, priorities, and action decisions based on duplicate analysis.
+    - **Output:** Comprehensive task plans with titles, descriptions, priorities, and action decisions based on enhanced duplicate analysis and similarity assessment.
 
   - **MODE 3: EXECUTE**
     - **Purpose:** Implement planned Asana task creation and updates based on approved plans.
-    - **Allowed:** Creating new tasks, updating existing tasks, adding comments, applying tags, using planned content only.
-    - **Forbidden:** Creating unplanned tasks, modifying content beyond planned changes, deleting existing tasks, creating duplicate comments.
-    - **Output:** Execution summary with success count, error reports, and completion status.
+    - **Allowed:** Creating new tasks, updating existing tasks, adding comments, applying tags, using planned content only, adding context comments to existing tasks for duplicate content.
+    - **Forbidden:** Creating unplanned tasks, modifying content beyond planned changes, deleting existing tasks, creating duplicate comments, ignoring duplicate content.
+    - **Output:** Execution summary with success count, error reports, completion status, and duplicate handling results.
 
 - **General Notes:**
   - You are not permitted to act outside of these defined modes.
@@ -53,7 +53,6 @@ When managing tasks from Telegram to Asana, you must adhere to the following str
 
 ## Telegram Configuration
 - **Chat ID:** 83292459 (Shuh)
-- **Extractor Script:** `tasks/telegram_extractor.py`
 - **Output Format:** `telegram_messages_Shuh_YYYYMMDD.md`
 
 ---
@@ -68,6 +67,13 @@ Priority: [High/Medium]
 - [Action item 2]
 - [Action item 3]
 ```
+
+**Description Rules:**
+- **NEVER** rewrite or interpret the original message content
+- **ALWAYS** use direct summary of original actionable instructions
+- **AVOID** adding context, explanations, or interpretations
+- **KEEP** descriptions concise and focused on specific actions
+- **USE** original terminology and phrasing when possible
 
 ## Datetime Format (UTC Required)
 - **Format:** YYYY-MM-DD HH:MM UTC (e.g., "2025-08-05 05:32 UTC")
@@ -118,10 +124,149 @@ Priority: [High/Medium]
 
 ---
 
+# 🔍 Enhanced Duplication Detection Protocol
+
+## Duplication Analysis Process
+
+### Step 1: Automated Pre-Screening
+- **Search Existing Tasks:** Query Asana for tasks with similar titles and keywords
+- **Keyword Extraction:** Identify key terms from new actionable instructions
+- **Similarity Scoring:** Calculate similarity scores using semantic matching
+- **Time-Based Filtering:** Focus on recent tasks (last 30-60 days)
+
+### Step 2: Semantic Content Matching
+**Title Similarity Analysis:**
+- Compare new task titles with existing tasks using fuzzy matching
+- Look for similar keywords: "contact form", "launcher", "support", "GitHub", "Figma", etc.
+- Check for variations: "Fix" vs "Update" vs "Complete" vs "Add"
+
+**Action Item Content Matching:**
+- Extract key action verbs and objects from task descriptions
+- Compare bullet points for similar functionality
+- Look for overlapping technical requirements
+
+**Context-Based Detection:**
+- Group tasks by functional areas (UI, backend, documentation, etc.)
+- Check for tasks that serve the same business purpose
+- Identify tasks that might be different implementations of the same requirement
+
+### Step 3: Manual Context Review
+- Review flagged potential duplicates
+- Consider business context and timing
+- Check if tasks serve different purposes
+- Validate if tasks are truly duplicates or complementary
+
+### Step 4: Decision Matrix
+| Similarity Level | Action Required |
+|------------------|-----------------|
+| 90%+ identical  | Add as comment to existing task with new context |
+| 70-89% similar  | Add as comment to existing task or create related task |
+| 50-69% overlap  | Check for dependencies, may add as comment |
+| <50% overlap    | Create new task |
+
+## Duplication Detection Checklist
+
+**Before Creating New Tasks:**
+□ Check task title similarity with existing tasks
+□ Review action items for content overlap
+□ Verify business context and purpose
+□ Check for complementary vs duplicate tasks
+□ Validate timing and dependencies
+□ Consider task lifecycle and completion status
+□ Review recent task history (last 30 days)
+□ Check for ongoing vs completed similar tasks
+
+**Similarity Keywords to Monitor:**
+- **UI/UX:** "button", "form", "layout", "design", "interface"
+- **Technical:** "fix", "update", "implement", "deploy", "test"
+- **Content:** "documentation", "changelog", "preview", "demo"
+- **Integration:** "launcher", "support", "checkout", "payment"
+- **Assets:** "Figma", "zip", "package", "upload", "download"
+
+## Duplication Prevention Rules
+
+**✅ DO:**
+- Search existing tasks before creating new ones
+- Use semantic keyword matching for similarity detection
+- Consider task dependencies and relationships
+- Group similar tasks by functional areas
+- Document duplication decisions for future reference
+- Add duplicate content as comments to existing tasks for additional context
+- Preserve all actionable information even if similar to existing tasks
+
+**❌ DO NOT:**
+- Create tasks without checking for existing similar tasks
+- Ignore duplicate content - always capture as comments
+- Discard potentially valuable context from similar instructions
+- Overlook task dependencies and relationships
+- Create redundant tasks without adding context to existing ones
+
+## Practical Implementation
+
+### ANALYZE Mode Duplication Detection Workflow
+
+**1. Extract Actionable Instructions**
+- Identify specific tasks from Telegram messages
+- Extract key keywords and action items
+- Determine priority levels and business context
+
+**2. Automated Similarity Search**
+- Search Asana project for tasks with similar titles
+- Use typeahead search for keyword matching
+- Review recent task history (last 50 tasks)
+
+**3. Semantic Analysis**
+- Compare action items for functional overlap
+- Check for similar technical requirements
+- Identify business purpose alignment
+
+**4. Duplication Assessment**
+- Apply similarity scoring (0-100%)
+- Use decision matrix for action determination
+- Document findings for PLAN mode
+
+**5. Output Enhanced Analysis**
+- Include similarity scores for each potential task
+- Provide duplication risk assessment
+- Recommend task creation or comment addition decisions
+- Identify existing tasks that should receive additional context
+
+### Duplicate Content Handling Workflow
+
+**When Duplicates Are Detected:**
+
+1. **High Similarity (90%+):**
+   - Add new instruction as comment to existing task
+   - Include timestamp and source context
+   - Use format: "Additional context from 2025-08-08 09:15 UTC: [original message summary]"
+
+2. **Medium Similarity (70-89%):**
+   - Evaluate if new content adds value
+   - Add as comment if provides additional context
+   - Create new task if significantly different approach
+
+3. **Low Similarity (50-69%):**
+   - Usually create new task
+   - May add cross-reference comment if related
+
+4. **Comment Format for Duplicates:**
+   ```
+   Additional context from [YYYY-MM-DD HH:MM UTC]:
+   - [Original instruction summary]
+   - [Key differences or additional details]
+   ```
+
+**NEVER Discard Information:**
+- All actionable content must be preserved
+- Use comments to maintain context
+- Avoid duplicate comments - check existing comments first
+
+---
+
 # 📁 File Locations
 
 ## Scripts & Tools
-- **Extractor Script:** `tasks/telegram_extractor.py`
+- **Extractor Command:** `python3 telegram_extractor.py`
 - **Rules File:** `.cursor/rules/asana.mdc`
 
 ## Output Files
